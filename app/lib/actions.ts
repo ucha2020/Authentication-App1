@@ -12,7 +12,7 @@ import bcrypt from "bcryptjs";
 import { promises } from "dns";
 
 export async function createUser(
-  prevState,
+  prevState: string,
   formData: FormData,
 ): Promise<CreateUserState | string | void> {
   const scannedCredentials = credentialsSchema.safeParse({

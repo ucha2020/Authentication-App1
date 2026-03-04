@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Full-Stack Next.js Project
 
-## Getting Started
+This project is a full-stack application built with Next.js, Prisma ORM, and Auth.js. It supports multi-role authentication and permission management, uses a PostgreSQL database hosted on Neon, and is deployed on Vercel. Authentication includes credentials and GitHub provider support.
 
-First, run the development server:
+# Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Full-stack Next.js application
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Database ORM with Prisma
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+PostgreSQL database via Neon
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Authentication & authorization with Auth.js
 
-## Learn More
+Multi-role access control
 
-To learn more about Next.js, take a look at the following resources:
+GitHub OAuth login
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Credentials-based authentication
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployment-ready for Vercel
 
-## Deploy on Vercel
+# Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Frontend & Backend: Next.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ORM: Prisma
+
+Database: PostgreSQL (Neon)
+
+Authentication: Auth.js
+
+Hosting: Vercel
+
+Version Control: Git & GitHub
+
+# Setup
+
+1. Clone the repository
+
+cd project-folder
+
+2. Install dependencies
+   `npm install`
+
+or
+
+`pnpm install`
+
+3. Configure Environment Variables
+
+# Create a .env file:
+
+DATABASE_URL="your-neon-postgres-url"
+AUTH_SECRET="your-secret-key"
+
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+
+4. Run Prisma Migrations
+   `npx prisma migrate dev`
+
+5. Start Development Server
+   `npm run dev`
+
+The app will be available at: [http://localhost:3000]
+
+# Deployment
+
+Deploy easily on Vercel:
+
+vercel
+
+Make sure environment variables are configured in the Vercel dashboard.
+
+# Authentication
+
+This project uses Auth.js with:
+
+Credentials login
+
+GitHub OAuth
+
+Role-based permissions
+
+# Database
+
+The database is powered by PostgreSQL on Neon with Prisma ORM for data modeling and queries.
+
+License
+
+MIT

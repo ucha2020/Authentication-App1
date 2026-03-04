@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { SignIn, SignOut } from "@/components/auth-components";
-import { auth } from "@/lib/auth";
-import prisma from "@/lib/prisma";
+//import { auth } from "@/lib/auth";
+//import prisma from "@/lib/prisma";
 
 const Page = async () => {
-  const session = await auth();
+  /*const session = await auth();
   let user = null;
   if (session) {
     user = await prisma.user.findUnique({
@@ -11,19 +12,30 @@ const Page = async () => {
         id: session.user?.id,
       },
     });
-  }
+  }*/
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <div className="bg-neutral-800 rounded-lg p-6 max-w-xl w-full">
         <h1 className="text-white text-xl mb-4 text-center">
-          Auth.js + Prisma
+          Welcome to Auth.js + Prisma Villa
         </h1>
-
-        {!session ? (
-          <div className="text-center">
-            <SignIn provider="github" />
-          </div>
+        <Link href="/dashboard">
+          <button type="button">Proceed to dashboard</button>
+        </Link>
+        <p>or</p>
+        <Link href="/login">
+          <button type="button">Sign in to proceed to dashboard</button>
+        </Link>
+        {/*!session ? (
+          <>
+            <div className="text-center">
+              <SignIn provider="credentials" />
+            </div>
+            <div className="text-center">
+              <SignIn provider="github" />
+            </div>
+          </>
         ) : (
           <div className="space-y-4">
             <div className="text-center">
@@ -44,7 +56,7 @@ const Page = async () => {
               <SignOut />
             </div>
           </div>
-        )}
+        )*/}
       </div>
     </div>
   );

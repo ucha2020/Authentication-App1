@@ -1,4 +1,4 @@
-import type { User } from "@/generated/prisma/client";
+import type { User, Prisma } from "@/generated/prisma/client";
 import prisma from "@/lib/prisma";
 
 export async function fetchUserWithUniqueEmail(
@@ -11,7 +11,9 @@ export async function fetchUserWithUniqueEmail(
   return user;
 }
 
-export async function createNewUser(user: User): Promise<User | never> {
+export async function createNewUser(
+  user: Prisma.UserCreateInput,
+): Promise<User | never> {
   const User = await prisma.user.create({ data: user });
   return User;
 }

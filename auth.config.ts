@@ -5,6 +5,7 @@ import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import { credentialsSchema } from "@/lib/zod";
 import { fetchUserWithUniqueEmail } from "@/lib/queryDB";
+import bcrypt from "bcryptjs";
 
 const providers: Provider[] = [
   Credentials({
@@ -28,6 +29,11 @@ const providers: Provider[] = [
         let user = null;
 
         // signIn details is valideted using zod
+        /*const isValid = await bcrypt.compare(password, user.password);
+
+        if (!isValid) {
+          throw new Error("Invalid credentials");
+        }*/
         const { email, password } =
           await credentialsSchema.parseAsync(credentials);
 
@@ -62,9 +68,9 @@ export const authConfig = {
   /*pages: {
     signIn: "/login",
   },*/
-  /**session: {
-  strategy: "jwt",
-  },*/
+  session: {
+    strategy: "database",
+  },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
@@ -77,14 +83,22 @@ export const authConfig = {
       }
       return true;
     },
-    async session({ session, token, user }) {
-      if (token) {
-        session.user.id = token.id as string;
+
+    /*
+    jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        return token;
       }
 
-      if (user) {
-        session.user.id = user.id;
-      }
+      return token;
+    },
+    */
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token and user id from a provider.
+      //session.accessToken = token.accessToken
+      //session.user.id = token.id
+      session.user.id = user?.id;
 
       return session;
     },

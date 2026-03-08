@@ -42,7 +42,7 @@ export async function createUser(
     }
     return "Something went wrong.";
   }
-
+  const r = "o";
   try {
     await signIn("credentials", {
       email: newUser?.email,

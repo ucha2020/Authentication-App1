@@ -1,12 +1,12 @@
-import LoginForm from "@/app/ui/loginForm";
+import SignupForm from "@/app/ui/signupForm";
 import { Suspense } from "react";
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <main>
       <div>
         <Suspense>
-          <LoginForm />
+          <SignupForm />
         </Suspense>
       </div>
     </main>

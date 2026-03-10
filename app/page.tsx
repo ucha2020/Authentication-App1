@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const HomePage = async () => {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <div className="bg-neutral-800 rounded-lg p-6 max-w-xl w-full">
-        <h1 className="text-white text-xl mb-4 text-center">
-          Welcome to Auth.js + Prisma App
+    <div>
+      <div>
+        <h1>
+          Welcome to authentication Next.js with app with Auth.js + Prisma
         </h1>
         <div>
           <Link href="/">

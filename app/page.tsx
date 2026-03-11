@@ -1,38 +1,41 @@
-import Link from "next/link";
+import PageLink from "./ui/link/pagelink";
 
 const HomePage = async () => {
   return (
     <div>
       <div>
-        <h1>
-          Welcome to authentication Next.js with app with Auth.js + Prisma
-        </h1>
+        <h1>Welcome to authentication App with Next.js + Auth.js + Prisma</h1>
         <div>
-          <Link href="/">
+          <PageLink href="/">
             <button type="button">Home</button>
-          </Link>
+          </PageLink>
         </div>
         <div>
-          <Link href="/about">
+          <PageLink href="/about">
             <button type="button">About</button>
-          </Link>
+          </PageLink>
         </div>
         <div>
-          <Link href="/dashboard">
+          <PageLink href="/dashboard">
             <button type="button">Proceed to dashboard</button>
-          </Link>
+          </PageLink>
         </div>
 
-        <p>or</p>
+        <div className="flex items-center">
+          <div className="flex-grow border-t border-[var(--base-color)]"></div>
+          <span className="px-3 text-[var(--base-color)]">OR</span>
+          <div className="flex-grow border-t border-[var(--base-color)]"></div>
+        </div>
+
         <div>
-          <Link href="/login">
+          <PageLink href="/login">
             <button type="button">Signin to proceed to dashboard</button>
-          </Link>
+          </PageLink>
         </div>
         <div>
-          <Link href="/signup">
+          <PageLink href="/signup">
             <button type="button">Signup to proceed dashboard</button>
-          </Link>
+          </PageLink>
         </div>
       </div>
     </div>

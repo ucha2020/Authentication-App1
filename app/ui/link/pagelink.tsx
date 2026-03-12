@@ -1,3 +1,5 @@
+"use client";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./link.module.css";
 import { ReactNode } from "react";
@@ -8,8 +10,9 @@ type NavLinkProps = {
 };
 
 export default function PageLink({ href, children }: NavLinkProps) {
+  const pathName = usePathname();
   return (
-    <Link href={href} className={styles.pagelink}>
+    <Link href={href} className={`${styles.pagelink} `}>
       {children}
     </Link>
   );

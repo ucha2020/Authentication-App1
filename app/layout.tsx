@@ -16,16 +16,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={styles.body}>
-        <header>
-          <nav>
-            <Navbar />
-          </nav>
-        </header>
-        <main>{children}</main>
-        <footer>
-          <Footer />
-        </footer>
+      <body className="flex flex-col items-center">
+        <div className="bg-background text-foreground max-w-xl flex flex-col min-h-screen justify-between">
+          <header>
+            <nav>
+              <Navbar />
+            </nav>
+          </header>
+          <main className="flex-1">{children}</main>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
       </body>
     </html>
   );

@@ -19,14 +19,21 @@ html {
   --lighter-base: rgb(128 128 179);
 }
 
+.dark {
+  --background: #02001a;
+  --foreground: #f2f3ff;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #02001a;
+    --foreground: #f2f3ff;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: white;
+
+  /*background: var(--background);
+  color: var(--foreground);*/
 }

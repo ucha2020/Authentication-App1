@@ -26,7 +26,7 @@
   text-decoration: underline;
 }
 
-.active {
+.activeNav {
   background-color: var(--base-color);
 }
 
@@ -38,18 +38,10 @@
 }
 
 .pagelink:link {
-  color: var(--base-color);
+  color: var(--light-base);
   cursor: pointer;
 }
 
-.pagelink:visited {
-  color: var(--light-base);
-}
-
 .pagelink:hover {
-  color: var(--dark-base);
-}
-
-.pagelink:active {
-  background-color: var(--darker-base);
+  color: var(--darker-base);
 }

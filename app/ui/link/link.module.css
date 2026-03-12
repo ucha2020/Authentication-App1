@@ -1,7 +1,6 @@
 .navlink {
   flex: auto;
   display: block;
-  background-color: var(--base-color);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.2s ease;
@@ -11,24 +10,24 @@
 }
 
 .navlink:link {
-  background-color: var(--base-color);
-}
-
-.navlink:visited {
   background-color: var(--light-base);
+}
+/*
+.navlink:visited {
+  background-color: var(--base-color);
 }
 
 .navlink:focus {
   outline: 2px solid var(--base-color);
   outline-offset: 2px;
-}
+}*/
 .navlink:hover {
   background-color: var(--dark-base);
   text-decoration: underline;
 }
 
-.navlink:active {
-  background-color: var(--darker-base);
+.active {
+  background-color: var(--base-color);
 }
 
 .navlink:first-child {

@@ -1,32 +1,30 @@
 "use client";
-/* Reenter password to be included later*/
 import { useActionState } from "react";
-import { signup, authenticateUserWithGitHub } from "@/lib/actions/authActions";
+import Link from "next/link";
+import {
+  authenticateUserWithCredencials,
+  authenticateUserWithGitHub,
+} from "@/lib/actions/authActions";
 import { useSearchParams } from "next/navigation";
 
-export default function SignupForm() {
+export default function LoginForm() {
   const searchParams = useSearchParams();
-  const [state, formAction, isPending] = useActionState(signup, undefined);
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  const [state, formAction, isPending] = useActionState(
+    authenticateUserWithCredencials,
+    undefined,
+  );
   const [state_G, formAction_G, isPending_G] = useActionState(
     authenticateUserWithGitHub,
     undefined,
   );
 
   return (
-    <>
+    <div>
       <form action={formAction}>
         <div>
-          <h1>Create an account to continue.</h1>
+          <h1>Please log in to continue.</h1>
           <div>
-            <div>
-              <label htmlFor="name">Name</label>
-              <input id="name" name="name" placeholder="Name" />
-              {
-                //state?.errors?.name && <p>{state.errors.name}</p>
-                state?.message && <p>{state?.message}</p>
-              }
-            </div>
-
             <div>
               <label htmlFor="email">Email</label>
               <div>
@@ -38,10 +36,6 @@ export default function SignupForm() {
                   required
                 />
               </div>
-              {
-                state?.message && <p>{state?.message}</p>
-                //state?.errors?.email && <p>{state.errors.email}</p>
-              }
             </div>
             <div className="mt-4">
               <label htmlFor="password">Password</label>
@@ -57,32 +51,36 @@ export default function SignupForm() {
               </div>
             </div>
           </div>
+          <input type="hidden" name="redirectTo" value={callbackUrl} />
           <button disabled={isPending}>
             {isPending ? "Creating..." : "Submit"}
           </button>
 
           <div>
-            {
-              state?.message && <p>{state?.message}</p>
-              /*{state?.errors?.password && (
-              <div>
-                <p>Password must:</p>
-                <ul>
-                  {state.errors.password.map((error) => (
-                    <li key={error}>- {error}</li>
-                  ))}
-                </ul>
-              </div>
-            )}*/
-            }
+            {state && (
+              <>
+                <p>{state.message}</p>
+              </>
+            )}
           </div>
         </div>
       </form>
       <form key="GitHub" action={formAction_G}>
         <button disabled={isPending_G}>
-          {isPending_G ? "Creating..." : "Sign in with GitHub"}
+          {isPending ? "Creating..." : "Sign in with GitHub"}
         </button>
+        <div>
+          {state_G && (
+            <>
+              <p>{state_G}</p>
+            </>
+          )}
+        </div>
       </form>
-    </>
+      <p>Don`t have an account?</p>
+      <Link href="/signup">
+        <button>Create a new account</button>
+      </Link>
+    </div>
   );
 }

@@ -12,15 +12,6 @@
 .navlink:link {
   background-color: var(--light-base);
 }
-/*
-.navlink:visited {
-  background-color: var(--base-color);
-}
-
-.navlink:focus {
-  outline: 2px solid var(--base-color);
-  outline-offset: 2px;
-}*/
 .navlink:hover {
   background-color: var(--dark-base);
   text-decoration: underline;

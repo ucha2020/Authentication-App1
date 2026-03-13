@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-(--background) text-(--foreground) max-w-xl flex flex-col min-h-screen justify-between">
+    <div className=" max-w-xl flex flex-col min-h-screen justify-between">
       <header>
         <nav>
           <Navbar />
@@ -20,3 +20,7 @@ export default function RootLayout({
     </div>
   );
 }
+/*box-shadow: 4px 3px 5px var(--light-base),
+    inset 8px 5px 50px var(--light-base);
+  margin-block: 10px;
+  margin-inline-end: 10px;*/

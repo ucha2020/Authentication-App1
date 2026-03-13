@@ -2,7 +2,7 @@ import PageLink from "../ui/link/pagelink";
 
 const HomePage = async () => {
   return (
-    <div className=" bg-(--background) text-(--foreground) flex flex-col   text-center">
+    <div className=" flex flex-col   text-center">
       <div>
         <h1>Welcome to authentication App with Next.js + Auth.js + Prisma</h1>
 

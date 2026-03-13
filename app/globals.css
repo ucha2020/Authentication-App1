@@ -9,7 +9,7 @@ html {
   box-sizing: inherit;
 }
 :root {
-  --background: #f2f3ff;
+  --background: #f2f2fb;
   --foreground: #02001a;
 
   --darker-base: rgb(9 9 59);
@@ -31,9 +31,8 @@ html {
   }
 }
 
-body {
+/*body {
   background: white;
 
-  /*background: var(--background);
-  color: var(--foreground);*/
-}
+  background: var(--background);
+  color: var(--foreground);}*/

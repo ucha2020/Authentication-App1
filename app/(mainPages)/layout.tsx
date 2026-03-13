@@ -20,7 +20,3 @@ export default function RootLayout({
     </div>
   );
 }
-/*box-shadow: 4px 3px 5px var(--light-base),
-    inset 8px 5px 50px var(--light-base);
-  margin-block: 10px;
-  margin-inline-end: 10px;*/

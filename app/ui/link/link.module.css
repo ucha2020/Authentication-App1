@@ -10,15 +10,15 @@
 }
 
 .navlink:link {
-  background-color: var(--light-base);
+  background-color: var(--base-color);
 }
 .navlink:hover {
-  background-color: var(--dark-base);
+  background-color: var(--darker-base);
   text-decoration: underline;
 }
 
 .activeNav {
-  background-color: var(--base-color);
+  background-color: var(--dark-base);
 }
 
 .navlink:first-child {
@@ -30,9 +30,9 @@
 
 .pagelink:link {
   color: var(--light-base);
-  cursor: pointer;
 }
 
 .pagelink:hover {
   color: var(--darker-base);
+  cursor: wait;
 }

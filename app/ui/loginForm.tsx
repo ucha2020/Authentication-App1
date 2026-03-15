@@ -65,6 +65,11 @@ export default function LoginForm() {
           </div>
         </div>
       </form>
+      <div className="flex items-center justify-center">
+        <div className="w-1/6 border-t border-(--base-color)"></div>
+        <span className="px-3 text-(--foreground)">OR</span>
+        <div className="w-1/6 border-t border-(--base-color)"></div>
+      </div>
       <form key="GitHub" action={formAction_G}>
         <button disabled={isPending_G}>
           {isPending ? "Creating..." : "Sign in with GitHub"}

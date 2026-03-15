@@ -12,7 +12,7 @@ type NavLinkProps = {
 export default function PageLink({ href, children }: NavLinkProps) {
   const pathName = usePathname();
   return (
-    <Link href={href} className={`${styles.pagelink} `}>
+    <Link href={href} className={`${styles.Btn} `}>
       {children}
     </Link>
   );

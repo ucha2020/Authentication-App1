@@ -8,9 +8,10 @@ html {
 ::before {
   box-sizing: inherit;
 }
+/*#f2f2fb*/
 :root {
-  --background: #f2f2fb;
-  --foreground: #02001a;
+  --background: #f2f2f6;
+  --foreground: #02001afb;
 
   --darker-base: rgb(9 9 59);
   --dark-base: rgb(26 26 89);

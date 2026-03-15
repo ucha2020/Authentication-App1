@@ -4,13 +4,13 @@ const HomePage = async () => {
   return (
     <div className="m-2 flex flex-col text-center">
       <div>
-        <h1>Welcome to authentication App with </h1>
-        <h1>Next.js + Auth.js + Prisma</h1>
+        <h1 className="text-lg font-semibold">
+          Welcome to authentication App with{" "}
+        </h1>
+        <h1 className="text-lg font-semibold">Next.js + Auth.js + Prisma</h1>
 
         <div>
-          <PageLink href="/dashboard">
-            <button type="button">Proceed to dashboard</button>
-          </PageLink>
+          <PageLink href="/dashboard">Proceed to dashboard</PageLink>
         </div>
 
         <div className="flex items-center justify-center">
@@ -20,14 +20,10 @@ const HomePage = async () => {
         </div>
 
         <div>
-          <PageLink href="/login">
-            <button type="button">Signin to proceed to dashboard</button>
-          </PageLink>
+          <PageLink href="/login">Signin to proceed to dashboard</PageLink>
         </div>
         <div>
-          <PageLink href="/signup">
-            <button type="button">Signup to create an account</button>
-          </PageLink>
+          <PageLink href="/signup">Signup to create an account</PageLink>
         </div>
       </div>
     </div>

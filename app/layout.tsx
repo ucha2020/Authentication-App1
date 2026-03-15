@@ -14,8 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-(--background) text-(--foreground)">
-        <div className="sm:max-md mx-auto my-2 w-xs">{children}</div>
+      <body className="min-h-screen bg-[#f2f2f68d]">
+        <div className="mx-auto my-2 w-[clamp(320px,90%,500px)] bg-(--background) text-(--foreground)">
+          {children}
+        </div>
       </body>
     </html>
   );

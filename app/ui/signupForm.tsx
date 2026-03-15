@@ -13,8 +13,8 @@ export default function SignupForm() {
   );
 
   return (
-    <div>
-      <form action={formAction}>
+    <div className="mx-auto">
+      <form action={formAction} className="mx-auto">
         <div>
           <h1>Create an account to continue.</h1>
           <div>
@@ -78,7 +78,7 @@ export default function SignupForm() {
           </div>
         </div>
       </form>
-      <form key="GitHub" action={formAction_G}>
+      <form key="GitHub" action={formAction_G} className="mx-auto">
         <button disabled={isPending_G}>
           {isPending_G ? "Creating..." : "Sign in with GitHub"}
         </button>

@@ -36,3 +36,40 @@
   color: var(--darker-base);
   cursor: wait;
 }
+.Btn {
+  display: inline-block;
+  margin-block: 1rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  line-height: 100%;
+  font-size: medium;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+
+  border-radius: calc(2.5em * 0.75);
+  border-color: var(--base-color);
+  border-width: thin;
+
+  background-image: linear-gradient(
+    to bottom right,
+    var(--lighter-base),
+    var(--background)
+  );
+  inset: -2px -3px 5px rgba(57, 57, 57, 0.536);
+  transition:
+    box-shadow 0.5s,
+    background-image 0.5s,
+    translateY 0.3s ease;
+}
+.a-btn:active button ul {
+  box-shadow:
+    inset 2px 2px 1px black,
+    inset 3px 5px rgb(0 0 0 / 30%),
+    inset -2px -3px 5px rgb(255 255 255 / 50%);
+  background-image: linear-gradient(to bottom right, #dddddd, #777777);
+}
+.btn-only:hover,
+.a-btn:hover button {
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 2px;
+}

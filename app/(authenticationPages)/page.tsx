@@ -2,9 +2,10 @@ import PageLink from "../ui/link/pagelink";
 
 const HomePage = async () => {
   return (
-    <div className=" flex flex-col  m-2 text-center">
+    <div className="m-2 flex flex-col text-center">
       <div>
-        <h1>Welcome to authentication App with Next.js + Auth.js + Prisma</h1>
+        <h1>Welcome to authentication App with </h1>
+        <h1>Next.js + Auth.js + Prisma</h1>
 
         <div>
           <PageLink href="/dashboard">

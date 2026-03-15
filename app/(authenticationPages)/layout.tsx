@@ -4,7 +4,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col  max-w-xl  min-h-[90vh] justify-center shadow-[4px_3px_5px_var(--lighter-base)] m-2 border-t-0.5 border-l-0.5 border-(--lighter-base)">
+    <div className="border-t-0.5 mx-auto my-2 flex min-h-[90vh] max-w-xl flex-col justify-center border-l border-[#e1e1ff] shadow-[4px_3px_5px_var(--lighter-base)]">
       {children}
     </div>
   );

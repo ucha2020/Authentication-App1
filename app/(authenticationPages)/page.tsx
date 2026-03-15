@@ -14,9 +14,9 @@ const HomePage = async () => {
         </div>
 
         <div className="flex items-center justify-center">
-          <div className="w-1/3 border-t border-(--base-color)"></div>
+          <div className="w-1/6 border-t border-(--base-color)"></div>
           <span className="px-3 text-(--foreground)">OR</span>
-          <div className="w-1/3 border-t border-(--base-color)"></div>
+          <div className="w-1/6 border-t border-(--base-color)"></div>
         </div>
 
         <div>

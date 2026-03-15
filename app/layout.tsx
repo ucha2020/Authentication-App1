@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-(--background) text-(--foreground)">
-        <div className="sm:max-md mx-auto my-2 max-w-[300px]">{children}</div>
+        <div className="sm:max-md mx-auto my-2 max-w-xs">{children}</div>
       </body>
     </html>
   );

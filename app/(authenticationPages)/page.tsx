@@ -7,8 +7,10 @@ const HomePage = async () => {
         <h1 className="text-lg font-semibold">
           Welcome to authentication App with{" "}
         </h1>
-        <h1 className="text-lg font-semibold">Next.js + Auth.js + Prisma</h1>
-
+        <h1 className="text-lg font-semibold">
+          Next.js + Auth.js + Prisma + TypeScript
+        </h1>
+        <h1 className="text-lg font-semibold">and TailWind CSS</h1>
         <div>
           <PageLink href="/dashboard">Proceed to dashboard</PageLink>
         </div>

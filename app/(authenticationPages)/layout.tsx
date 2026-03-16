@@ -6,7 +6,7 @@ export default function RootLayout({
 }>) {
   return (
     <div
-      className={`border-t-0.5 sm:max-md mx-auto my-2 flex min-h-[90vh] flex-col justify-center border-l border-[#e1e1ff] shadow-[4px_3px_5px_var(--lighter-base)]`}
+      className={`border-t-0.5 sm:max-md mx-auto my-2 flex min-h-[90vh] flex-col justify-center shadow-[2px_2px_4px_var(--lighter-base)]`}
     >
       {children}
     </div>

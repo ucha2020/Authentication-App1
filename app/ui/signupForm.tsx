@@ -5,6 +5,7 @@ import style from "./link/link.module.css";
 import { useActionState } from "react";
 import { signup, authenticateUserWithGitHub } from "@/lib/actions/authActions";
 import { useSearchParams } from "next/navigation";
+import { FaGithub } from "react-icons/fa6";
 
 export default function SignupForm() {
   const searchParams = useSearchParams();
@@ -25,7 +26,7 @@ export default function SignupForm() {
           height="20"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         >
           <path d="M15 18l-6-6 6-6" />
         </svg>
@@ -33,7 +34,7 @@ export default function SignupForm() {
       </Link>
       <form action={formAction} className="mx-auto">
         <h1 className="text-xl font-medium">Create an account to continue.</h1>
-        <div>
+        <div className="flex flex-col items-center">
           <div className="mt-4">
             <label htmlFor="name">Name</label>
             <div>
@@ -83,13 +84,15 @@ export default function SignupForm() {
             </div>
           </div>
         </div>
-        <button
-          type="submit"
-          disabled={isPending}
-          className={`mt-4 ${style.Btn}`}
-        >
-          {isPending ? "Creating..." : "Submit"}
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            disabled={isPending}
+            className={`mt-4 ${style.Btn}`}
+          >
+            {isPending ? "Creating..." : "Submit"}
+          </button>
+        </div>
 
         <div>
           {
@@ -108,13 +111,14 @@ export default function SignupForm() {
         </div>
       </form>
       <div className="flex items-center justify-center">
-        <div className="w-1/6 border-t border-(--base-color)"></div>
+        <div className="w-1/3 border-t border-(--base-color)"></div>
         <span className="px-3 text-(--foreground)">OR</span>
-        <div className="w-1/6 border-t border-(--base-color)"></div>
+        <div className="w-1/3 border-t border-(--base-color)"></div>
       </div>
       <form key="GitHub" action={formAction_G} className="mx-auto text-center">
         <button disabled={isPending_G} className={`${style.Btn}`}>
-          {isPending_G ? "Creating..." : "Sign in with GitHub"}
+          {isPending_G ? "Signing in..." : "Sign in with GitHub"}
+          <FaGithub className="ml-3 inline text-(--light-base)" />
         </button>
       </form>
     </div>

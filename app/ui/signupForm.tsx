@@ -1,5 +1,6 @@
 "use client";
 /* Reenter password and forget password to be included later*/
+import Link from "next/link";
 import style from "./link/link.module.css";
 import { useActionState } from "react";
 import { signup, authenticateUserWithGitHub } from "@/lib/actions/authActions";
@@ -15,6 +16,21 @@ export default function SignupForm() {
 
   return (
     <div className="mx-auto">
+      <Link
+        href="/"
+        className="hover:shadow-[1px 1px 2px rgba(25, 25, 64, 0.5)] absolute top-0 left-0 m-2 flex items-center gap-2 rounded-2xl border-(--base-color) bg-[#e1e1e1] pr-2 pb-px hover:bg-[#d1d1d1]"
+      >
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+        Back
+      </Link>
       <form action={formAction} className="mx-auto">
         <h1 className="text-xl font-medium">Create an account to continue.</h1>
         <div>

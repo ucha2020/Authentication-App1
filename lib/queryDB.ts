@@ -4,11 +4,16 @@ import prisma from "@/lib/prisma";
 export async function fetchUserWithUniqueEmail(
   emailAdress: string,
 ): Promise<User | null> {
-  const user = await prisma.user.findUnique({
-    where: { email: emailAdress },
-  });
+  let user;
+  try {
+    user = await prisma.user.findUnique({
+      where: { email: emailAdress },
+    });
+  } catch (err) {
+    throw err;
+  }
 
-  return user;
+  return user ? user : null;
 }
 
 export async function createNewUser(

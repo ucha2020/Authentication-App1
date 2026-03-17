@@ -31,12 +31,10 @@ export default function SignupForm() {
                 className="box-border min-w-55 border border-(--base-color) px-0.5 focus:outline-(--darker-base)"
               />
             </div>
-
-            {
-              //state?.errors?.name && <p>{state.errors.name}</p>
-              state?.message && <p>{state?.message}</p>
-            }
           </div>
+          {state?.nameMessage && (
+            <p className="mt-2 text-sm text-red-500">{state?.nameMessage} </p>
+          )}
 
           <div className="mt-4">
             <label htmlFor="email">Email</label>
@@ -50,11 +48,14 @@ export default function SignupForm() {
                 className="box-border min-w-55 border border-(--base-color) px-0.5 focus:outline-(--darker-base)"
               />
             </div>
-            {
-              state?.message && <p>{state?.message}</p>
-              //state?.errors?.email && <p>{state.errors.email}</p>
-            }
           </div>
+          {
+            state?.emailMessage && (
+              <p className="mt-2 text-sm text-red-500">{state?.emailMessage}</p>
+            )
+            //state?.errors?.email && <p>{state.errors.email}</p>
+          }
+
           <div className="mt-4">
             <label htmlFor="password">Password</label>
             <div className="relative">
@@ -76,6 +77,11 @@ export default function SignupForm() {
               </button>
             </div>
           </div>
+          {state?.passwordMessage && (
+            <p className="mt-2 text-sm text-red-500">
+              {state?.passwordMessage}
+            </p>
+          )}
         </div>
         <div className="flex justify-center">
           <button
@@ -83,24 +89,8 @@ export default function SignupForm() {
             disabled={isPending}
             className={`mt-4 ${style.Btn}`}
           >
-            {isPending ? "Creating..." : "Submit"}
+            {isPending ? "Creating account..." : "Create Account"}
           </button>
-        </div>
-
-        <div>
-          {
-            state?.message && <p>{state?.message}</p>
-            /*{state?.errors?.password && (
-              <div>
-                <p>Password must:</p>
-                <ul>
-                  {state.errors.password.map((error) => (
-                    <li key={error}>- {error}</li>
-                  ))}
-                </ul>
-              </div>
-            )}*/
-          }
         </div>
       </form>
       <div className="flex items-center justify-center">

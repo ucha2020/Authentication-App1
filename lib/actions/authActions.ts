@@ -1,20 +1,19 @@
 "use server";
-
+import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Prisma } from "@/generated/prisma/client";
 import { signIn, signOut } from "@/lib/auth";
 import { AuthError } from "next-auth";
-
-import {
-  SignupFormSchema,
-  FormState,
-  SigninFormSchema,
-} from "@/lib/definitions";
+import type { signupErrorMessage } from "@/lib/definitions";
+import { SignupFormSchema, SigninFormSchema } from "@/lib/definitions";
 import { createNewUser } from "@/lib/queryDB";
 import bcrypt from "bcrypt";
 
-export async function signup(prevState: FormState, formData: FormData) {
+export async function signup(
+  prevState: signupErrorMessage | undefined,
+  formData: FormData,
+) {
   // Validate form fields
   const validatedFields = SignupFormSchema.safeParse({
     name: formData.get("name"),
@@ -24,32 +23,38 @@ export async function signup(prevState: FormState, formData: FormData) {
 
   // If any form fields are invalid, return early
   if (!validatedFields.success) {
+    const errorObj = z.treeifyError(validatedFields.error);
+    const nameError = errorObj.properties?.name?.errors?.[0];
+    const emailError = errorObj.properties?.email?.errors?.[0];
+    const passwordError = errorObj.properties?.password?.errors?.[0];
+
     return {
-      message: "xxxxxx",
-      //errors: z.treeifyError(validatedFields.error),
+      nameMessage: nameError,
+      emailMessage: emailError,
+      passwordMessage: passwordError,
     };
   }
-  const data = validatedFields.data;
-  const hashedPassword = await bcrypt.hash(data.password, 10);
-  let newUser;
-  try {
-    newUser = await createNewUser({ ...data, password: hashedPassword });
-  } catch (error: unknown) {
-    if (
-      error instanceof Prisma.PrismaClientKnownRequestError &&
-      error.code === "P2002"
-    ) {
-      return { message: "Email already registered" };
+  if (validatedFields.data) {
+    const data = validatedFields.data;
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+    let newUser;
+    try {
+      newUser = await createNewUser({ ...data, password: hashedPassword });
+    } catch (error: unknown) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === "P2002"
+      ) {
+        return { emailMessage: "Email already registered" };
+      }
     }
-    return { message: "Something went wrong." };
-  }
-  const r = "o";
 
-  await signIn("credentials", {
-    email: data.email,
-    password: data.password,
-    redirectTo: "/dashboard",
-  });
+    await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirectTo: "/dashboard",
+    });
+  }
 }
 export async function authenticateUserWithCredencials(
   prevState: { message: string } | undefined,
@@ -63,12 +68,20 @@ export async function authenticateUserWithCredencials(
   });
   if (!validatedFields.success) {
     return {
-      message: "xxxxxx",
+      message: "Invalid credentials.",
       //errors: z.treeifyError(validatedFields.error),
     };
   }
-
-  await signIn("credentials", formData);
+  try {
+    await signIn("credentials", formData);
+  } catch (error) {
+    if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+      throw error;
+    }
+    if (error instanceof AuthError) {
+      return { message: "Invalid credentials." };
+    }
+  }
 }
 
 export const authenticateUserWithGitHub = async (

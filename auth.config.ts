@@ -30,7 +30,7 @@ const providers: Provider[] = [
       let user;
       try {
         user = await fetchUserWithUniqueEmail(email);
-      } catch {
+      } catch (error) {
         //To be added later
         //maybe an erroy page
       }

@@ -1,8 +1,8 @@
-import NavLink from "./link/navlink";
+import NavLink from "./navlink";
 
 export default function Navbar() {
   return (
-    <div className=" flex justify-between border-b-2}">
+    <div className="border-b-2} flex justify-between">
       <NavLink href="/">Home</NavLink>
       <NavLink href="/about">About</NavLink>
       <NavLink href="/dashboard">Dashboard</NavLink>

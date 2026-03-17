@@ -53,9 +53,9 @@ const providers: Provider[] = [
   GitHub,
 ];
 export const authConfig = {
-  /*pages: {
+  pages: {
     signIn: "/login",
-  },*/
+  },
   session: {
     strategy: "jwt",
   },

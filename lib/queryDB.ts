@@ -17,8 +17,3 @@ export async function createNewUser(
   const User = await prisma.user.create({ data: user });
   return User;
 }
-
-export async function createSession(sessionObj: Prisma.SessionCreateInput) {
-  const session = await prisma.session.create({ data: sessionObj });
-  return session;
-}

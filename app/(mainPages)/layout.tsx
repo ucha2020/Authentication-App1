@@ -1,5 +1,6 @@
 import Navbar from "../ui/navbar";
 import Footer from "../ui/footer";
+import Link from "next/link";
 
 export default function RootLayout({
   children,
@@ -13,7 +14,17 @@ export default function RootLayout({
           <Navbar />
         </nav>
       </header>
-      <main className="m-2 flex-1 text-center">{children}</main>
+      <main className="m-2 flex-1 pt-8 text-center">
+        {children}
+        <p className="mt-8 flex justify-center">
+          <Link
+            href="/signout"
+            className="hover:shadow-[1px 1px 2px rgba(25, 25, 64, 0.5)] PY-2 m-2 rounded-2xl border-(--base-color) bg-[#e1e1e1] px-4 hover:bg-[#d1d1d1]"
+          >
+            Sign out
+          </Link>
+        </p>
+      </main>
       <footer>
         <Footer />
       </footer>

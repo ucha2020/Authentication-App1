@@ -1,4 +1,4 @@
-import PageLink from "../ui/link/pagelink";
+import PageLink from "../ui/pagelink";
 
 const HomePage = async () => {
   return (

@@ -1,4 +1,5 @@
 import style from "./styles.module.css";
+import Link from "next/link";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -8,6 +9,21 @@ export default function RootLayout({
     <div
       className={`border-t-0.5 sm:max-md relative mx-auto my-2 flex min-h-[90vh] flex-col justify-center shadow-[2px_2px_4px_var(--lighter-base)]`}
     >
+      <Link
+        href="/"
+        className="hover:shadow-[1px 1px 2px rgba(25, 25, 64, 0.5)] absolute top-0 left-0 m-2 flex items-center gap-2 rounded-2xl border-(--base-color) bg-[#e1e1e1] pr-2 pb-px hover:bg-[#d1d1d1]"
+      >
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+        Back
+      </Link>
       {children}
     </div>
   );

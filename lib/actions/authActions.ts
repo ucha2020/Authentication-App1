@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Prisma } from "@/generated/prisma/client";
-import { signIn } from "@/lib/auth";
+import { signIn, signOut } from "@/lib/auth";
 import { AuthError } from "next-auth";
 
 import {
@@ -76,5 +76,15 @@ export const authenticateUserWithGitHub = async (
   formData: FormData,
 ) => {
   await signIn("github", { redirectTo: "/dashboard" });
+  return "ok";
+};
+
+export const signOutCallBack = async (
+  prevState: string | undefined,
+  formData: FormData,
+) => {
+  await signOut({
+    redirectTo: "/login",
+  });
   return "ok";
 };

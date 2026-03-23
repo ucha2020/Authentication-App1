@@ -23,29 +23,26 @@ const providers: Provider[] = [
     },
     authorize: async (credentials) => {
       //This function is called when the signIn button is clicked
-      const { email, password } = credentials as {
+      const { email, password, fromUpgrade } = credentials as {
         email: string;
         password: string;
+        fromUpgrade: boolean;
       };
-      let user;
-      try {
-        user = await fetchUserWithUniqueEmail(email);
-      } catch (error) {
-        //To be added later
-        //maybe an erroy page
-      }
+
+      const user = await fetchUserWithUniqueEmail(email);
 
       if (!user) {
         // No user found
         throw new Error("Invalid credentials.");
       }
 
-      const isValid = await bcrypt.compare(password, user.password as string);
+      if (!fromUpgrade) {
+        const isValid = await bcrypt.compare(password, user.password as string);
 
-      if (!isValid) {
-        throw new Error("Invalid credentials");
+        if (!isValid) {
+          throw new Error("Invalid credentials");
+        }
       }
-
       // return user object with their profile data
       return user;
     },
@@ -70,6 +67,18 @@ export const authConfig = {
         return Response.redirect(new URL("/dashboard", nextUrl));
       }
       return true;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user && typeof token.role === "string") {
+        session.user.role = token.role;
+      }
+      return session;
     },
   },
   providers,

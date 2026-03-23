@@ -22,3 +22,11 @@ export async function createNewUser(
   const User = await prisma.user.create({ data: user });
   return User;
 }
+
+export async function upgradeUser(userEmail: string): Promise<User> {
+  const updatedUser = await prisma.user.update({
+    where: { email: userEmail },
+    data: { role: "ADMIN" },
+  });
+  return updatedUser;
+}

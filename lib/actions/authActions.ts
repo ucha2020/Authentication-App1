@@ -7,7 +7,7 @@ import { signIn, signOut } from "@/lib/auth";
 import { AuthError } from "next-auth";
 import type { signupErrorMessage } from "@/lib/definitions";
 import { SignupFormSchema, SigninFormSchema } from "@/lib/definitions";
-import { createNewUser } from "@/lib/queryDB";
+import { createNewUser, upgradeUser } from "@/lib/queryDB";
 import bcrypt from "bcrypt";
 
 export async function signup(
@@ -41,11 +41,23 @@ export async function signup(
     try {
       newUser = await createNewUser({ ...data, password: hashedPassword });
     } catch (error: unknown) {
-      if (
-        error instanceof Prisma.PrismaClientKnownRequestError &&
-        error.code === "P2002"
-      ) {
-        return { emailMessage: "Email already registered" };
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        switch (error.code) {
+          case "P2002":
+            return { emailMessage: "Email already registered" };
+            break;
+          case "P1001":
+          case "P1002":
+            return {
+              message: " Database server is unavailable. Try again later.",
+            };
+          default:
+            throw new Error("An unexpected error occurred. Try again later.");
+        }
+      } else if (error instanceof Prisma.PrismaClientInitializationError) {
+        throw new Error("Database connection error");
+      } else {
+        throw error;
       }
     }
 
@@ -69,9 +81,9 @@ export async function authenticateUserWithCredencials(
   if (!validatedFields.success) {
     return {
       message: "Invalid credentials.",
-      //errors: z.treeifyError(validatedFields.error),
     };
   }
+
   try {
     await signIn("credentials", formData);
   } catch (error) {
@@ -80,6 +92,8 @@ export async function authenticateUserWithCredencials(
     }
     if (error instanceof AuthError) {
       return { message: "Invalid credentials." };
+    } else {
+      throw error;
     }
   }
 }
@@ -101,3 +115,25 @@ export const signOutCallBack = async (
   });
   return "ok";
 };
+
+export async function upgradeUserToAdmin(
+  prevState: string | undefined,
+  formData: FormData,
+) {
+  const userEmail = formData.get("userEmail") as string;
+
+  try {
+    await upgradeUser(userEmail);
+  } catch (error) {
+    return "Failed to upgrade user. Try again later.";
+  }
+
+  await signIn("credentials", {
+    email: userEmail,
+    redirect: false,
+    fromUpgrade: true,
+  });
+
+  revalidatePath("/dashboard/admin");
+  redirect("/dashboard/admin");
+}

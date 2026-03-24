@@ -65,7 +65,7 @@
   background-color: #d1d1d1;
 }
 :global(html.dark) .Btn {
-  color: #02001a;
+  color: #000;
   /*color: rgb(255, 255, 204);*/
   background-color: rgb(52 52 119);
   box-shadow: 1px 1px 2px #c1c5ff;

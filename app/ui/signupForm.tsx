@@ -3,13 +3,11 @@
 import style from "@/app/styles/link.module.css";
 import { useActionState, useState } from "react";
 import { signup, authenticateUserWithGitHub } from "@/lib/actions/authActions";
-import { useSearchParams } from "next/navigation";
 import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa6";
 //import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const searchParams = useSearchParams();
   const [state, formAction, isPending] = useActionState(signup, undefined);
   const [state_G, formAction_G, isPending_G] = useActionState(
     authenticateUserWithGitHub,
@@ -101,7 +99,7 @@ export default function SignupForm() {
       <form key="GitHub" action={formAction_G} className="mx-auto text-center">
         <button disabled={isPending_G} className={`${style.Btn}`}>
           {isPending_G ? "Signing in..." : "Sign in with GitHub"}
-          <FaGithub className="ml-3 inline text-(--light-base)" />
+          <FaGithub className="ml-3 inline text-(--light-base) dark:text-(--darker-base)" />
         </button>
       </form>
     </div>

@@ -19,7 +19,7 @@ export default function RootLayout({
         <p className="mt-8 flex justify-center">
           <Link
             href="/signout"
-            className="hover:shadow-[1px 1px 2px rgba(25, 25, 64, 0.5)] PY-2 m-2 rounded-2xl border-(--base-color) bg-[#e1e1e1] px-4 hover:bg-[#d1d1d1]"
+            className="hover:shadow-[1px 1px 2px rgba(25, 25, 64, 0.5)] PY-2 m-2 rounded-2xl border-(--base-color) bg-[#e1e1e1] px-4 hover:bg-[#d1d1d1] dark:bg-(--base-color) dark:hover:bg-(--base-color) dark:hover:text-[#a2ff33]"
           >
             Sign out
           </Link>

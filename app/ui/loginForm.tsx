@@ -80,7 +80,7 @@ export default function LoginForm() {
       <form key="GitHub" action={formAction_G} className="mx-auto text-center">
         <button disabled={isPending_G} className={`${style.Btn}`}>
           {isPending_G ? "Signing in..." : "Sign in with GitHub"}
-          <FaGithub className="ml-3 inline text-(--light-base)" />
+          <FaGithub className="ml-3 inline text-(--light-base) dark:text-(--darker-base)" />
         </button>
         <div>
           {state_G && (

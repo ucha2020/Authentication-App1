@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "./providers";
+import ThemeToggle from "./ui/theme-toggle";
 
 export const metadata: Metadata = {
   title: "Authentication App with Next.js + Auth.js + Prisma",
@@ -13,11 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-[#f2f2f68d]">
-        <div className="mx-auto my-2 w-[clamp(320px,90%,500px)] bg-(--background) text-(--foreground)">
-          {children}
-        </div>
+        <Providers>
+          <div className="relative mx-auto my-2 w-[clamp(320px,90%,500px)] bg-(--background) text-(--foreground)">
+            <ThemeToggle />
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

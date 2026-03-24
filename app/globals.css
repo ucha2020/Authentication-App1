@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   box-sizing: border-box;
@@ -22,7 +23,7 @@ html {
 
 .dark {
   --background: #02001a;
-  --foreground: #f2f3ff;
+  --foreground: rgb(255, 255, 204);
 }
 
 @media (prefers-color-scheme: dark) {
